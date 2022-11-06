@@ -1,3 +1,5 @@
+Thia is a collection of Python exercised I've been working through while I teach myself vim.
+
 Python Exercises
 ===================
 
