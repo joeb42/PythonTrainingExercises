@@ -18,26 +18,28 @@ Created on Sep 12, 2011
 @author: paulross
 """
 
-__author__  = 'Paul Ross'
-__date__    = '2011-09-12'
-__version__ = '0.1.0'
-__rights__  = 'Copyright (c) 2011 Paul Ross. Copyright (c) 2015 AHL.'
+__author__ = "Paul Ross"
+__date__ = "2011-09-12"
+__version__ = "0.1.0"
+__rights__ = "Copyright (c) 2011 Paul Ross. Copyright (c) 2015 AHL."
+
 
 def keep_sorted():
-    """A co-routine that receives words and maintains a sorted list of them.
-    """ 
+    """A co-routine that receives words and maintains a sorted list of them."""
     l = []
     while True:
-        # Your code goes here
-        yield l
+        new_word = yield l
+        if new_word is not None:
+            l.append(new_word)
+            l.sort()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     g = keep_sorted()
     # Start the generator
-    g.next()
+    next(g)
     # Send stuff
-    print g.send('zzz')
-    print g.send('Hi there')
-    print 'Sorted list is {0:s}'.format(g.next())    
+    print(g.send("zzz"))
+    print(g.send("Hi there"))
+    print(f"Sorted list is {next(g)}")
     g.close()
