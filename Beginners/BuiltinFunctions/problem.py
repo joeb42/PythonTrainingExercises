@@ -44,58 +44,65 @@ import sys
 
 import pytest
 
+
 def create_sequence(N):
     """Create the 3x table up to and including N."""
-    # Your code here
-    pass
+    return [i * 3 for i in range(N // 3 + 1)]
+
 
 def range_of_list():
     """Return the difference between the largest and smallest values in a list."""
     x = [4, 3, -9, 21, 0]
-    # Your code here
+    return max(x) - min(x)
+
 
 def range_of_list_abs():
     """Return the difference between the largest and smallest absolute values in a list."""
     x = [4, 3, -9, 21, 0]
-    # Your code here
+    return max(x, key=lambda i: abs(i)) - min(x, key=lambda i: abs(i))
+
 
 def list_to_sequence_dict():
     """Create a dictionary where the key is the ordinal of the object in the list
     and the value is the object itself. For example: {0 : 'Zero', 1 : 'One', ...}"""
-    x = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
-    d = {}
-    # Your code here
+    x = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    d = {i: j for i, j in enumerate(x)}
     return d
+
 
 def is_same(a, b):
     """Return True is the two items are the same."""
-    # Your code here
-    pass
+    return a is b
 
-#=========== Tests ===================
+
+# =========== Tests ===================
 def test_create_sequence():
     assert create_sequence(12) == [0, 3, 6, 9, 12]
-    
+
+
 def test_range_of_list():
     assert range_of_list() == 30
+
 
 def test_range_of_list_abs():
     assert range_of_list_abs() == 21
 
+
 def test_list_to_sequence_dict():
     expected = {
-        0 : 'Zero',
-        1 : 'One',
-        2 : 'Two',
-        3 : 'Three',
-        4 : 'Four',
-        5 : 'Five',
-        6 : 'Six',
-        7 : 'Seven',
-        8 : 'Eight',
-        9 : 'Nine',
+        0: "Zero",
+        1: "One",
+        2: "Two",
+        3: "Three",
+        4: "Four",
+        5: "Five",
+        6: "Six",
+        7: "Seven",
+        8: "Eight",
+        9: "Nine",
     }
     assert list_to_sequence_dict() == expected
+
 
 def test_is_same():
     a = [1, 2, 3]
@@ -103,9 +110,11 @@ def test_is_same():
     assert is_same(a, b)
     b = [1, 2, 3]
     assert not is_same(a, b)
-    
+
+
 def main():
     return pytest.main(__file__)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     sys.exit(main())
